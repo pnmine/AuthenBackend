@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "YOBE5Xp5fQA8JuGNlRZ0Tv344zrt8JfQo+IsAHFEG7c=",
+  "Source": "AuthenBackend",
+  "BasePath": "_content/AuthenBackend",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

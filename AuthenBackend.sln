@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenBackend", "AuthenBackend.csproj", "{850F06BE-81E7-4F13-89C0-BBBF293227FF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{850F06BE-81E7-4F13-89C0-BBBF293227FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{850F06BE-81E7-4F13-89C0-BBBF293227FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{850F06BE-81E7-4F13-89C0-BBBF293227FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{850F06BE-81E7-4F13-89C0-BBBF293227FF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
