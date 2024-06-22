@@ -1,3 +1,5 @@
+using AuthenBackend.DTOs.Auth;
+
 namespace AuthenBackend.Controllers
 {
     [ApiController]
@@ -15,7 +17,7 @@ namespace AuthenBackend.Controllers
             var response = await _authRepository.Register(
                 new User { 
                     Username = request.Username , 
-                    Firstname = request.Username,
+                    Firstname = request.Firstname,
                     Lastname = request.Lastname,
                     Email = request.Email,
                     Phone = request.Phone
@@ -30,7 +32,7 @@ namespace AuthenBackend.Controllers
         }
 
         [HttpPost("Login")]
-        public async Task<ActionResult<ServiceResponse<string>>> Login(UserLoginDto request)
+        public async Task<ActionResult<ServiceResponse<AuthResponseDto>>> Login(UserLoginDto request)
         {
             var response = await _authRepository.Login(request.Username, request.Password);
             if (response.Success == false) //if false
@@ -39,6 +41,8 @@ namespace AuthenBackend.Controllers
             }
             return Ok(response);
         }
+        
+        
 
     }
 }

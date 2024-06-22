@@ -6,6 +6,9 @@ global using System.IdentityModel.Tokens.Jwt;
 global using System.Security.Claims;
 global using AuthenBackend.DTOs.User;
 global using Microsoft.AspNetCore.Mvc;
+global using AutoMapper;
+global using AuthenBackend.Services;
+global using Microsoft.AspNetCore.Authorization;
 
 global using System;
 global using System.Collections.Generic;
@@ -14,6 +17,7 @@ global using System.Threading.Tasks;
 global using Microsoft.AspNetCore.Authentication.JwtBearer;
 global using Microsoft.OpenApi.Models;
 global using Swashbuckle.AspNetCore.Filters;
+using AuthenBackend.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -40,6 +44,7 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<DataContext>(option => option.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 // Add services 
 builder.Services.AddScoped<IAuthRepository, AuthRepository>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>

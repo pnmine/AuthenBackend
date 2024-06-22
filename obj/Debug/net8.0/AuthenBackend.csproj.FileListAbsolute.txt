@@ -141,3 +141,4 @@
 /Users/pn/Documents/AuthenBackend/bin/Debug/net8.0/tr/Microsoft.CodeAnalysis.Workspaces.resources.dll
 /Users/pn/Documents/AuthenBackend/bin/Debug/net8.0/zh-Hans/Microsoft.CodeAnalysis.Workspaces.resources.dll
 /Users/pn/Documents/AuthenBackend/bin/Debug/net8.0/zh-Hant/Microsoft.CodeAnalysis.Workspaces.resources.dll
+/Users/pn/Documents/AuthenBackend/obj/Debug/net8.0/AuthenBackend.sourcelink.json

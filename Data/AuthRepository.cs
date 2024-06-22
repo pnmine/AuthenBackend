@@ -1,3 +1,5 @@
+using AuthenBackend.DTOs.Auth;
+
 namespace AuthenBackend.Data
 {
     public class AuthRepository : IAuthRepository
@@ -10,9 +12,9 @@ namespace AuthenBackend.Data
             _context = context;
             _configuration = configuration;
         }
-        public async Task<ServiceResponse<string>> Login(string username, string password)
+        public async Task<ServiceResponse<AuthResponseDto>> Login(string username, string password)
         {
-            var response = new ServiceResponse<string>();
+            var response = new ServiceResponse<AuthResponseDto>();
             var user = await _context.Users.FirstOrDefaultAsync(user => user.Username.ToLower().Equals(username.ToLower()));
             //user ที่มี username ตรงกับ database
             if (user == null) //ไม่พบ userใน database
@@ -30,7 +32,12 @@ namespace AuthenBackend.Data
                 response.Success = true;
                 response.Message = "Login successfully :)";
                 // response.Data = user.Id.ToString();
-                response.Data = CreateToken(user); //สร้าง token เก็บ user
+                var token = CreateToken(user);
+                response.Data = new AuthResponseDto{
+                    UserId = user.Id,
+                    Token = token.Token,
+                    TokenExpired = (DateTime)token.Expire!
+                };
             }
             return response;
         }
@@ -82,7 +89,7 @@ namespace AuthenBackend.Data
             }
         }
 
-        private string CreateToken(User user)
+        private (string Token, DateTime? Expire) CreateToken(User user)
         {
             var claims = new List<Claim>
             {
@@ -108,7 +115,7 @@ namespace AuthenBackend.Data
             };
             JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
             SecurityToken token = tokenHandler.CreateToken(tokenDescriptor); //create token
-            return tokenHandler.WriteToken(token); //write token in to Jwt
+            return (Token: tokenHandler.WriteToken(token), Expire: tokenDescriptor.Expires); //write token in to Jwt
         }
     }
 }
